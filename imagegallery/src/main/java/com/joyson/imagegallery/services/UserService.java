@@ -1,0 +1,22 @@
+package com.joyson.imagegallery.services;
+
+import java.util.List;
+
+import com.joyson.imagegallery.model.Users;
+
+/**
+ * Basic CRUD operation for Users
+ * 
+ * @author Joyson De Souza
+ *
+ */
+public interface UserService {
+
+	public void saveUser(Users user);
+
+	public void updateUser(Users user);
+
+	public Users getUser(Long userId);
+
+	public List<Users> getAllUser();
+}
