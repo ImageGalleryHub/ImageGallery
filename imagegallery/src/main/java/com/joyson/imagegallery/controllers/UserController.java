@@ -28,7 +28,7 @@ import com.joyson.imagegallery.services.UserService;
  *
  */
 @RestController
-public class UserController {
+public class UserController extends ImageGalleryBaseController {
 
 	@Autowired
 	UserService userService;
@@ -39,23 +39,23 @@ public class UserController {
 	@Autowired
 	ImageContentService imageContentService;
 	
-	@RequestMapping(path = "/saveUser", method = RequestMethod.POST)
+	@RequestMapping(path = "/user", method = RequestMethod.POST)
 	public void saveUser(@RequestBody Users user) {
 		userService.saveUser(user);
 	}
 
-	@RequestMapping(path = "/getAllUsers", method = RequestMethod.GET)
+	@RequestMapping(path = "/users", method = RequestMethod.GET)
 	public List<Users> getAllUsers() {
 		return userService.getAllUser();
 	}
 
-	@RequestMapping(path = "/uploadImage", method = RequestMethod.POST)
+	@RequestMapping(path = "/upload", method = RequestMethod.POST)
 	public void saveImage(@RequestParam("file") MultipartFile file, @RequestParam("info") String info)
 			throws IOException {
 		imageService.saveImage(file, info);
 	}
 
-	@RequestMapping(path = "/getImage/{imageId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/image/{imageId}", method = RequestMethod.GET)
 	public void getImageContents(HttpServletResponse response, @PathVariable("imageId") Long imageId)
 			throws IOException {
 		Images images = imageService.getImage(imageId);

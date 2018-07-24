@@ -17,7 +17,7 @@ import com.joyson.imagegallery.services.UserServiceImpl;
 /**
  * Image Gallery beans configuration
  * 
- * @author Jaison
+ * @author Joyson De Souza
  *
  */
 @Configuration

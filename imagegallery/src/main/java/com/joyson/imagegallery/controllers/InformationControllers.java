@@ -13,12 +13,12 @@ import com.joyson.imagegallery.model.ImageGallery;
  *
  */
 @RestController
-public class InformationControllers {
+public class InformationControllers extends ImageGalleryBaseController {
 
 	@Autowired
 	ImageGallery imageGallery;
 
-	@RequestMapping("/imageGalleryInfo")
+	@RequestMapping("/info")
 	ImageGallery imageGalleryInfo() {
 		return imageGallery;
 	}

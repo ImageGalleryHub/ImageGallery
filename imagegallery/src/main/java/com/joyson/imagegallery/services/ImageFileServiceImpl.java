@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Implementation of ImageFileService interface
  * 
- * @author Jaison
+ * @author Joyson De Souza
  *
  */
 @Transactional
