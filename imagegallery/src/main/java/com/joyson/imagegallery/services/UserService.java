@@ -2,6 +2,8 @@ package com.joyson.imagegallery.services;
 
 import java.util.List;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import com.joyson.imagegallery.model.Users;
 
 /**
@@ -10,7 +12,7 @@ import com.joyson.imagegallery.model.Users;
  * @author Joyson De Souza
  *
  */
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
 	public void saveUser(Users user);
 

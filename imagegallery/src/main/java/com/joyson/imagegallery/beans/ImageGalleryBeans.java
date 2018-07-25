@@ -11,6 +11,8 @@ import com.joyson.imagegallery.services.ImageContentServiceImpl;
 import com.joyson.imagegallery.services.ImageFileServiceImpl;
 import com.joyson.imagegallery.services.ImageService;
 import com.joyson.imagegallery.services.ImageServiceImpl;
+import com.joyson.imagegallery.services.RoleService;
+import com.joyson.imagegallery.services.RoleServiceImpl;
 import com.joyson.imagegallery.services.UserService;
 import com.joyson.imagegallery.services.UserServiceImpl;
 
@@ -50,5 +52,10 @@ public class ImageGalleryBeans {
 	@Bean
 	public ImageService imageService() {
 		return new ImageServiceImpl();
+	}
+
+	@Bean
+	public RoleService roleService() {
+		return new RoleServiceImpl();
 	}
 }

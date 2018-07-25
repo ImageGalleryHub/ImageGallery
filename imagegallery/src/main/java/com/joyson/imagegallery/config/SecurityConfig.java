@@ -1,5 +1,6 @@
 package com.joyson.imagegallery.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.joyson.imagegallery.services.UserService;
+
 /**
  * Security configuration for image gallery app
  * 
@@ -16,9 +19,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  *
  */
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private UserService userService;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.formLogin().disable() // disable form authentication
@@ -29,9 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		BCryptPasswordEncoder encoder = passwordEncoder();
-		auth.inMemoryAuthentication() // creating user in memory
+		/*auth.inMemoryAuthentication() // creating user in memory
 				.passwordEncoder(encoder).withUser("user").password(encoder.encode("password")).roles("USER").and()
-				.withUser("admin").password(encoder.encode("password")).authorities("ROLE_ADMIN");
+				.withUser("admin").password(encoder.encode("password")).authorities("ROLE_ADMIN");*/
+		auth.userDetailsService(userService).passwordEncoder(encoder);
 	}
 
 	@Override

@@ -8,10 +8,10 @@ import com.joyson.imagegallery.model.Users;
 /**
  * DAO for Users
  * 
- * @author Jaison
+ * @author Joyson De Souza
  *
  */
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
-
+	Users findByUsername(String username);
 }

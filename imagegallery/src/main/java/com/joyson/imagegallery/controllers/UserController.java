@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.joyson.imagegallery.model.Images;
+import com.joyson.imagegallery.model.Role;
 import com.joyson.imagegallery.model.Users;
 import com.joyson.imagegallery.services.ImageContentService;
 import com.joyson.imagegallery.services.ImageService;
+import com.joyson.imagegallery.services.RoleService;
 import com.joyson.imagegallery.services.UserService;
 
 /**
@@ -38,9 +42,16 @@ public class UserController extends ImageGalleryBaseController {
 
 	@Autowired
 	ImageContentService imageContentService;
-	
+
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+
+	@Autowired
+	RoleService roleService;
+
 	@RequestMapping(path = "/user", method = RequestMethod.POST)
-	public void saveUser(@RequestBody Users user) {
+	public void saveUser(@RequestBody Users user, ModelMap map) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userService.saveUser(user);
 	}
 
@@ -62,5 +73,10 @@ public class UserController extends ImageGalleryBaseController {
 		response.setContentType(images.getMimeType());
 		response.setCharacterEncoding("UTF-8");
 		IOUtils.copy(imageContentService.getImageBinInputStream(images.getContentUrl()), response.getOutputStream());
+	}
+
+	@RequestMapping(path = "/role", method = RequestMethod.POST)
+	public void saveRole(@RequestBody Role role) {
+		roleService.saveRole(role);
 	}
 }

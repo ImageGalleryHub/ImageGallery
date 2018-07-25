@@ -17,7 +17,7 @@ import javax.persistence.SequenceGenerator;
  * @author Joyson De Souza
  *
  */
-@Entity(name = "Images")
+@Entity(name = "images")
 public class Images {
 
 	@Id
