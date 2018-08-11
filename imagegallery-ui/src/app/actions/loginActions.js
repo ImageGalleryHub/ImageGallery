@@ -4,11 +4,8 @@ export function login(username, password) {
     payload: new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({ username, password });
+        console.log(username + ' ' + password);
       }, 2000);
     })
-    // payload : {
-    //     username: username,
-    //     password: password
-    // }
   };
 }

@@ -20,9 +20,9 @@ const mathReducer = (
         lastValues: [...state.lastValues, action.payload]
       };
       break;
-    default:
-      console.log('no reducers are defined');
-      break;
+    // default:
+    //   console.log('no reducers are defined');
+    //   break;
   }
   return state;
 };

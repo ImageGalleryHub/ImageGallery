@@ -18,9 +18,9 @@ const userReducer = (
         age: action.payload
       };
       break;
-    default:
-      console.log('no reducers are defined');
-      break;
+    // default:
+    //   console.log('no reducers are defined');
+    //   break;
   }
   return state;
 };

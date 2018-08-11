@@ -1,10 +1,4 @@
-const loginReducer = (
-  state = {
-    username: 'John',
-    password: 'Doe'
-  },
-  action
-) => {
+const loginReducer = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN_FULFILLED': {
       state = {
@@ -14,10 +8,10 @@ const loginReducer = (
       };
       break;
     }
-    default: {
-      console.log('There is no default case!!');
-      break;
-    }
+    // default: {
+    //   console.log('There is no default case!!');
+    //   break;
+    // }
   }
   return state;
 };

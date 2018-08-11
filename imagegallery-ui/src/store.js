@@ -16,5 +16,5 @@ export default createStore(
     form: formReducer
   }),
   {},
-  applyMiddleware(logger, thunk, promise())
+  applyMiddleware(thunk, promise())
 );
